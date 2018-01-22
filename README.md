@@ -4,7 +4,7 @@ Configurable OpenVPN server with Mikrotik clients support
 
 Image configuration:
 
-Mandatory variables
+- Mandatory variables
 
 AUTH_USERNAME - openvpn username
 
@@ -12,7 +12,7 @@ AUTH_PASSWORD - openvpn password
 
 
 
-Main variables
+- Main variables
 
 VPN_NETWORK (default - 10.43.0.0) - network address of VPN network
 
@@ -28,7 +28,7 @@ COMPRESS (default empty) (comp-lzo)
 
 
 
-Custom variables (IPIP tunnel)
+- Custom variables (IPIP tunnel)
 
 TUNNEL_LOCAL - ip address local interface of IPIP tunnel
 
