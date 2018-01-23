@@ -120,7 +120,7 @@ fi
 echo 1 > /proc/sys/net/ipv4/ip_forward
 iptables -t nat -F
 iptables -t nat -A POSTROUTING -o tun0 -j MASQUERADE
-#iptables -t nat -A POSTROUTING -s $VPN_NETWORK/$VPNPOOL_NETMASK -j MASQUERADE
+iptables -t nat -A POSTROUTING -s $VPN_NETWORK/$VPNPOOL_NETMASK -j MASQUERADE
 
 #CUSTOM
 #pridanie ipip tunnel, maska na 29 - net addr: 0,8,16...
