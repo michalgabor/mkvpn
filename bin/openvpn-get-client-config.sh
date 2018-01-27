@@ -14,7 +14,7 @@ resolv-retry infinite
 cipher $CIPHER
 auth $AUTH
 nobind
-link-mtu 1500
+link-mtu $LINK_MTU
 persist-key
 persist-tun
 $COMPRESS
