@@ -18,6 +18,9 @@ link-mtu 1500
 persist-key
 persist-tun
 $COMPRESS
+$TUN_MTU
+$FRAGMENT
+$MSSFIX
 verb 3
 auth-user-pass
 auth-retry interact
