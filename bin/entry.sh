@@ -27,6 +27,9 @@ OPENVPNDIR="/etc/openvpn"
 [ "$CIPHER" = "" ]          && export CIPHER="AES-128-CBC"
 [ "$AUTH" = "" ]            && export AUTH="SHA1"
 [ "$COMPRESS" = "" ]        && export COMPRESS=""
+[ "$TUN_MTU" = "" ]        && export TUN_MTU=""
+[ "$FRAGMENT" = "" ]        && export FRAGMENT=""
+[ "$MSSFIX" = "" ]        && export MSSFIX=""
 
 #IP tunnel
 [ "$TUNNEL_CIDR" = "" ]    && export TUNNEL_CIDR="29"
@@ -74,12 +77,14 @@ auth $AUTH
 server $VPN_NETWORK $VPNPOOL_NETMASK
 keepalive 10 120
 $COMPRESS
+$TUN_MTU
+$FRAGMENT
+$MSSFIX
 persist-key
 persist-tun
 client-to-client
 username-as-common-name
 client-cert-not-required
-
 topology subnet
 script-security 3 system
 auth-user-pass-verify /usr/local/bin/openvpn-auth.sh via-env
