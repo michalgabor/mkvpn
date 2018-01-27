@@ -27,12 +27,13 @@ OPENVPNDIR="/etc/openvpn"
 [ "$CIPHER" = "" ]          && export CIPHER="AES-128-CBC"
 [ "$AUTH" = "" ]            && export AUTH="SHA1"
 [ "$COMPRESS" = "" ]        && export COMPRESS=""
-[ "$TUN_MTU" = "" ]        && export TUN_MTU=""
+[ "$TUN_MTU" = "" ]         && export TUN_MTU=""
 [ "$FRAGMENT" = "" ]        && export FRAGMENT=""
-[ "$MSSFIX" = "" ]        && export MSSFIX=""
+[ "$MSSFIX" = "" ]          && export MSSFIX=""
+[ "$LINK_MTU" = "" ]        && export LINK_MTU="1500"
 
 #IP tunnel
-[ "$TUNNEL_CIDR" = "" ]    && export TUNNEL_CIDR="29"
+[ "$TUNNEL_CIDR" = "" ]     && export TUNNEL_CIDR="29"
 
 
 
@@ -66,7 +67,7 @@ VPNPOOL_NETMASK=$(netmask -s $VPN_NETWORK/$VPNPOOL_CIDR | awk -F/ '{print $2}')
 cat > $OPENVPNDIR/server.conf <<- EOF
 port 1194
 proto $PROTO
-link-mtu 1500
+link-mtu $LINK_MTU
 dev tun
 ca easy-rsa/keys/ca.crt
 cert easy-rsa/keys/server.crt
